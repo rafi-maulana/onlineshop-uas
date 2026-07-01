@@ -8,9 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/onlineshop-uas/assets/main-BLxyvLCy.js"></script>
-    <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-BIgxvzZm.js">
-    <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-DehQ_2de.css">
+    <script type="module" crossorigin src="/onlineshop-uas/assets/main-o-GdvDf2.js"></script>
+    <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-BbfPF93b.js">
+    <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-BOvirK4w.css">
   </head>
   <body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
     
@@ -26,12 +26,12 @@
         <a href="index.html" id="logoText" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
           TechStore
         </a>
-        <div class="flex space-x-3 items-center">
-            <!-- Search & Filters -->
+        <div class="flex space-x-1.5 sm:space-x-3 items-center">
+            <!-- Search & Filters (desktop only) -->
             <div class="relative hidden md:block">
                 <input type="text" id="searchInput" placeholder="Cari produk..." class="bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-4 py-2 w-56 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-500">
             </div>
-            <select id="categoryFilter" class="bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-3 py-2 text-slate-300 focus:outline-none focus:border-violet-500 transition-all cursor-pointer">
+            <select id="categoryFilter" class="hidden md:block bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-3 py-2 text-slate-300 focus:outline-none focus:border-violet-500 transition-all cursor-pointer">
                 <option value="" class="bg-slate-950">Semua Kategori</option>
                 <option value="Electronics" class="bg-slate-950">Elektronik</option>
                 <option value="Accessories" class="bg-slate-950">Aksesori</option>
@@ -39,14 +39,14 @@
                 <option value="Photography" class="bg-slate-950">Fotografi</option>
             </select>
             
-            <!-- My Orders link (shown for logged-in regular users) -->
-            <a id="myOrdersLink" href="orders.html" class="hidden text-sm font-semibold text-slate-300 hover:text-violet-400 flex items-center gap-1.5 transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-                Pesanan Saya
+            <!-- My Orders link (icon only on mobile) -->
+            <a id="myOrdersLink" href="orders.html" class="hidden items-center gap-1.5 transition-all p-2 sm:p-0 text-slate-300 hover:text-violet-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                <span class="hidden sm:inline text-sm font-semibold">Pesanan Saya</span>
             </a>
 
-            <!-- Wishlist Icon (UTS Bonus) -->
-            <button id="wishlistToggleBtn" class="relative p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-rose-400 cursor-pointer">
+            <!-- Wishlist Icon -->
+            <button id="wishlistToggleBtn" class="relative p-2 sm:p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-rose-400 cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -54,36 +54,41 @@
             </button>
 
             <!-- Cart Icon -->
-            <a href="cart.html" class="relative p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-violet-400">
+            <a href="cart.html" class="relative p-2 sm:p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-violet-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
                 <span id="cartCount" class="absolute -top-1.5 -right-1.5 bg-violet-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-[#0b0f19]">0</span>
             </a>
 
-            <!-- Dark Mode Toggle (UTS Bonus) -->
-            <button id="themeToggleBtn" class="p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-amber-400 cursor-pointer">
-                <!-- Sun Icon -->
+            <!-- Dark Mode Toggle -->
+            <button id="themeToggleBtn" class="hidden sm:block p-2 sm:p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-amber-400 cursor-pointer">
                 <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707-.707m12.728 0l-.707.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
                 </svg>
-                <!-- Moon Icon -->
                 <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
             </button>
             
             <!-- Auth Link -->
-            <a id="authLink" href="login.html" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35">
+            <a id="authLink" href="login.html" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 whitespace-nowrap">
               Masuk
             </a>
         </div>
       </div>
     </nav>
 
-    <!-- Mobile Search -->
-    <div class="md:hidden px-4 mt-6 mx-auto max-w-7xl">
-        <input type="text" id="searchInputMobile" placeholder="Cari produk..." class="w-full bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-500">
+    <!-- Mobile Search & Filter -->
+    <div class="md:hidden px-4 mt-4 mx-auto max-w-7xl flex gap-2">
+        <input type="text" id="searchInputMobile" placeholder="Cari produk..." class="flex-1 bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-500">
+        <select id="categoryFilterMobile" class="bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-3 py-3 text-slate-300 focus:outline-none focus:border-violet-500 transition-all cursor-pointer">
+            <option value="" class="bg-slate-950">Semua</option>
+            <option value="Electronics" class="bg-slate-950">Elektronik</option>
+            <option value="Accessories" class="bg-slate-950">Aksesori</option>
+            <option value="Fashion" class="bg-slate-950">Fashion</option>
+            <option value="Photography" class="bg-slate-950">Fotografi</option>
+        </select>
     </div>
 
     <!-- Hero Banner Section -->
