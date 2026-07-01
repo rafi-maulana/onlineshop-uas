@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechStore - Elektronik Premium</title>
+    <meta name="description" content="Temukan gadget teknologi premium, aksesori, dan perlengkapan fotografi pilihan terbaik.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/main-CWXeWOvJ.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/api-CPQncDaR.js">
+    <link rel="stylesheet" crossorigin href="/assets/api-DehQ_2de.css">
+  </head>
+  <body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
+    
+    <!-- Floating Mesh Gradient Background -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] overflow-hidden -z-10 opacity-30 pointer-events-none">
+      <div class="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600 blur-[120px]"></div>
+      <div class="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-600 blur-[150px]"></div>
+    </div>
+
+    <!-- Glassmorphic Navbar -->
+    <nav class="sticky top-4 z-40 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="glass rounded-2xl shadow-xl mt-4 px-6 py-4 flex justify-between items-center transition-all duration-300">
+        <a href="index.html" id="logoText" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
+          TechStore
+        </a>
+        <div class="flex space-x-3 items-center">
+            <!-- Search & Filters -->
+            <div class="relative hidden md:block">
+                <input type="text" id="searchInput" placeholder="Cari produk..." class="bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-4 py-2 w-56 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-500">
+            </div>
+            <select id="categoryFilter" class="bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-3 py-2 text-slate-300 focus:outline-none focus:border-violet-500 transition-all cursor-pointer">
+                <option value="" class="bg-slate-950">Semua Kategori</option>
+                <option value="Electronics" class="bg-slate-950">Elektronik</option>
+                <option value="Accessories" class="bg-slate-950">Aksesori</option>
+                <option value="Fashion" class="bg-slate-950">Fashion</option>
+                <option value="Photography" class="bg-slate-950">Fotografi</option>
+            </select>
+            
+            <!-- My Orders link (shown for logged-in regular users) -->
+            <a id="myOrdersLink" href="orders.html" class="hidden text-sm font-semibold text-slate-300 hover:text-violet-400 flex items-center gap-1.5 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                Pesanan Saya
+            </a>
+
+            <!-- Wishlist Icon (UTS Bonus) -->
+            <button id="wishlistToggleBtn" class="relative p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-rose-400 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                <span id="wishlistCount" class="absolute -top-1.5 -right-1.5 bg-rose-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-[#0b0f19]">0</span>
+            </button>
+
+            <!-- Cart Icon -->
+            <a href="cart.html" class="relative p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-violet-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <span id="cartCount" class="absolute -top-1.5 -right-1.5 bg-violet-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center border-2 border-[#0b0f19]">0</span>
+            </a>
+
+            <!-- Dark Mode Toggle (UTS Bonus) -->
+            <button id="themeToggleBtn" class="p-2.5 bg-slate-900/50 border border-slate-800 rounded-xl hover:bg-slate-800 hover:border-slate-700 transition text-slate-300 hover:text-amber-400 cursor-pointer">
+                <!-- Sun Icon -->
+                <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707-.707m12.728 0l-.707.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                </svg>
+                <!-- Moon Icon -->
+                <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            
+            <!-- Auth Link -->
+            <a id="authLink" href="login.html" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35">
+              Masuk
+            </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Search -->
+    <div class="md:hidden px-4 mt-6 mx-auto max-w-7xl">
+        <input type="text" id="searchInputMobile" placeholder="Cari produk..." class="w-full bg-slate-900/50 border border-slate-800 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-500">
+    </div>
+
+    <!-- Hero Banner Section -->
+    <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="relative rounded-3xl overflow-hidden glass p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-8 shadow-2xl border-t border-white/5">
+            <div class="max-w-xl text-center md:text-left">
+                <span class="text-xs uppercase tracking-widest text-violet-400 font-extrabold bg-violet-500/10 px-3.5 py-1.5 rounded-full border border-violet-500/20">Toko Next-Gen</span>
+                <h1 id="heroTitle" class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none mt-4 text-white">
+                    Upgrade <span class="bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent">Gaya Hidup Digital</span> Kamu
+                </h1>
+                <p id="heroDescription" class="mt-4 text-slate-400 text-base md:text-lg">
+                    Temukan gadget teknologi premium, aksesori, dan perlengkapan fotografi pilihan terbaik untuk masa depan.
+                </p>
+            </div>
+            <div class="w-64 h-64 md:w-80 md:h-80 relative flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full bg-indigo-500/20 animate-pulse blur-xl"></div>
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80" alt="Produk Unggulan" class="w-48 h-48 md:w-60 md:h-60 object-cover rounded-3xl shadow-2xl border border-white/10 rotate-3 hover:rotate-0 transition-transform duration-500">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Storefront Catalog -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16 pb-20">
+        <div class="flex justify-between items-center mb-8">
+            <h2 class="text-3xl font-extrabold text-white tracking-tight">Katalog Produk Kami</h2>
+            <p id="resultCount" class="text-sm text-slate-400 font-medium">Memuat katalog...</p>
+        </div>
+        
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="col-span-full text-center py-20">
+                <div class="inline-block w-8 h-8 border-4 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-slate-400 mt-4 text-sm font-medium">Memuat produk...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Wishlist Modal (UTS Bonus) -->
+    <div id="wishlistModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+        <div class="glass p-8 rounded-3xl shadow-2xl w-full max-w-lg border border-white/5 relative max-h-[85vh] flex flex-col justify-between">
+            <div>
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        Produk Favorit (Wishlist)
+                    </h3>
+                    <button id="closeWishlistBtn" class="text-slate-400 hover:text-white transition cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="wishlistItems" class="space-y-4 overflow-y-auto max-h-[50vh] pr-2">
+                    <!-- Wishlist items injected here -->
+                </div>
+            </div>
+            
+            <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-white/5">
+                <button id="clearWishlistBtn" class="bg-slate-950/50 border border-slate-800 hover:bg-slate-800 text-rose-400 px-5 py-2.5 rounded-xl text-sm font-semibold transition cursor-pointer">Hapus Semua</button>
+                <button id="closeWishlistBtn2" class="bg-violet-600 hover:bg-violet-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow-lg cursor-pointer">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>

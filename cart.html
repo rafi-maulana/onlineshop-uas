@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Anda - TechStore</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/cart-B1OWwhDU.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/api-CPQncDaR.js">
+  <link rel="stylesheet" crossorigin href="/assets/api-DehQ_2de.css">
+</head>
+<body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
+    
+    <!-- Floating Mesh Gradient Background -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] overflow-hidden -z-10 opacity-20 pointer-events-none">
+      <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600/15 blur-[120px]"></div>
+      <div class="absolute top-[30%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-600/15 blur-[150px]"></div>
+    </div>
+
+    <!-- Sticky Glassmorphic Navbar -->
+    <nav class="sticky top-4 z-40 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="glass rounded-2xl shadow-xl mt-4 px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
+          TechStore
+        </a>
+        <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-violet-400 flex items-center gap-1.5 transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Kembali Belanja
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12 flex flex-col lg:flex-row gap-8 pb-20">
+        <!-- Cart Items -->
+        <div class="lg:w-2/3 bg-slate-900/40 backdrop-blur-md border border-white/5 p-8 rounded-3xl shadow-xl flex flex-col justify-between">
+            <div>
+                <h2 class="text-2xl font-extrabold text-white tracking-tight mb-6 flex items-center gap-2">
+                    Keranjang Belanja
+                </h2>
+                <div id="cartItems" class="space-y-6">
+                    <!-- Items injected here -->
+                </div>
+            </div>
+            <div class="mt-8 flex justify-between items-center border-t border-white/5 pt-6">
+                <span class="text-slate-400 font-semibold text-base">Total Nilai Pesanan:</span>
+                <span id="cartTotal" class="text-3xl font-extrabold text-violet-400">Rp 0</span>
+            </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="lg:w-1/3 bg-slate-900/40 backdrop-blur-md border border-white/5 p-8 rounded-3xl shadow-xl h-fit">
+            <h2 class="text-xl font-extrabold text-white tracking-tight mb-6">Detail Pengiriman</h2>
+            <form id="checkoutForm" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                    <input type="text" id="custName" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-600 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nomor WhatsApp</label>
+                    <input type="text" id="custPhone" required placeholder="Contoh: 087706335584" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-600 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Alamat Lengkap</label>
+                    <textarea id="custAddress" required rows="3" placeholder="Masukkan alamat lengkap pengiriman..." class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-600 text-white"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-emerald-900/25 hover:shadow-emerald-900/40 flex items-center justify-center gap-2 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                    </svg>
+                    Pesan via WhatsApp
+                </button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - TechStore</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/admin-DjBzN_gn.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/api-CPQncDaR.js">
+  <link rel="stylesheet" crossorigin href="/assets/api-DehQ_2de.css">
+</head>
+<body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
+    
+    <!-- Floating Mesh Gradients -->
+    <div class="absolute inset-0 overflow-hidden -z-10 opacity-20 pointer-events-none">
+      <div class="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-violet-600 blur-[130px]"></div>
+      <div class="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] rounded-full bg-blue-600 blur-[150px]"></div>
+    </div>
+
+    <!-- Sticky Glassmorphic Admin Navbar -->
+    <nav class="sticky top-4 z-40 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="glass rounded-2xl shadow-xl mt-4 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
+            <a href="index.html" id="adminLogo" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent">
+              TechStore Panel Kontrol
+            </a>
+        </div>
+        <div class="flex space-x-4 items-center">
+            <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-violet-400 transition-all">Lihat Toko</a>
+            <button id="logoutBtn" class="bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 text-red-400 px-4 py-2 rounded-xl text-sm font-bold transition-all cursor-pointer">Keluar</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-10 flex flex-col gap-8 pb-20">
+        
+        <!-- Dashboard Stats Widgets -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="glass p-6 rounded-3xl border border-white/5 shadow-xl flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Produk</p>
+                    <h3 id="statTotalProducts" class="text-3xl font-extrabold text-white mt-1">0</h3>
+                </div>
+                <div class="p-3 bg-violet-500/10 rounded-2xl border border-violet-500/20 text-violet-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-3xl border border-white/5 shadow-xl flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Pesanan</p>
+                    <h3 id="statTotalOrders" class="text-3xl font-extrabold text-white mt-1">0</h3>
+                </div>
+                <div class="p-3 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-3xl border border-white/5 shadow-xl flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Pengguna</p>
+                    <h3 id="statTotalUsers" class="text-3xl font-extrabold text-white mt-1">0</h3>
+                </div>
+                <div class="p-3 bg-fuchsia-500/10 rounded-2xl border border-fuchsia-500/20 text-fuchsia-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+            </div>
+            <div class="glass p-6 rounded-3xl border border-white/5 shadow-xl flex items-center justify-between">
+                <div>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Pendapatan</p>
+                    <h3 id="statRevenue" class="text-2xl font-extrabold text-violet-400 mt-1">Rp 0</h3>
+                </div>
+                <div class="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-emerald-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16V5" /></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab Navigation -->
+        <div class="flex gap-2 bg-slate-900/50 border border-white/5 rounded-2xl p-1.5 w-fit">
+            <button class="tab-btn active-tab px-5 py-2.5 rounded-xl text-sm font-bold cursor-pointer transition-all" data-tab="products">Produk</button>
+            <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold cursor-pointer transition-all text-slate-400 hover:text-white" data-tab="orders">Pesanan</button>
+            <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold cursor-pointer transition-all text-slate-400 hover:text-white" data-tab="users">Pengguna</button>
+            <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-bold cursor-pointer transition-all text-slate-400 hover:text-white" data-tab="settings">Pengaturan</button>
+        </div>
+
+        <!-- PRODUCTS TAB -->
+        <section id="tab-products" class="glass p-8 rounded-3xl border border-white/5 shadow-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <div>
+                    <h2 class="text-2xl font-extrabold text-white tracking-tight">Kelola Inventoris</h2>
+                    <p class="text-slate-400 text-xs mt-1">Buat, lihat, ubah, atau hapus produk secara langsung.</p>
+                </div>
+                <button id="addProductBtn" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold py-2.5 px-5 rounded-xl text-sm transition-all shadow-lg shadow-indigo-600/25 flex items-center gap-1.5 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                    Tambah Produk
+                </button>
+            </div>
+            <div class="overflow-x-auto rounded-2xl border border-white/5">
+                <table class="min-w-full divide-y divide-white/5">
+                    <thead class="bg-slate-950/60">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Gambar</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Nama Produk</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Kategori</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Harga</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody" class="bg-slate-900/10 divide-y divide-white/5 text-slate-300"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ORDERS TAB -->
+        <section id="tab-orders" class="hidden glass p-8 rounded-3xl border border-white/5 shadow-xl">
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">Manajemen Pesanan</h2>
+                <p class="text-slate-400 text-xs">Lihat dan perbarui status semua pesanan yang masuk.</p>
+            </div>
+            <div class="overflow-x-auto rounded-2xl border border-white/5">
+                <table class="min-w-full divide-y divide-white/5">
+                    <thead class="bg-slate-950/60">
+                        <tr>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">ID Pesanan</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Pelanggan</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">No. WhatsApp</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Total</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Tanggal</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Perbarui Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody" class="bg-slate-900/10 divide-y divide-white/5 text-slate-300"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- USERS TAB -->
+        <section id="tab-users" class="hidden glass p-8 rounded-3xl border border-white/5 shadow-xl">
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">Manajemen Pengguna</h2>
+                <p class="text-slate-400 text-xs">Lihat, ubah, atau hapus akun pengguna yang terdaftar.</p>
+            </div>
+            <div class="overflow-x-auto rounded-2xl border border-white/5">
+                <table class="min-w-full divide-y divide-white/5">
+                    <thead class="bg-slate-950/60">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">ID</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Nama</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">No. Telepon</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Peran (Role)</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Bergabung</th>
+                            <th class="px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody" class="bg-slate-900/10 divide-y divide-white/5 text-slate-300"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SETTINGS TAB -->
+        <section id="tab-settings" class="hidden glass p-8 rounded-3xl border border-white/5 shadow-xl">
+            <div class="mb-6">
+                <h2 class="text-2xl font-extrabold text-white tracking-tight mb-1">Pengaturan Toko</h2>
+                <p class="text-slate-400 text-xs">Ubah nama toko, nomor WhatsApp pemilik, dan konten banner utama (hero).</p>
+            </div>
+            <form id="settingsForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Toko</label>
+                    <input type="text" id="setShopName" required placeholder="Contoh: TechStore" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nomor WhatsApp Pemilik</label>
+                    <input type="text" id="setOwnerPhone" required placeholder="Contoh: 6287706335584" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Judul Utama (Hero Title)</label>
+                    <input type="text" id="setHeroTitle" required placeholder="Upgrade Gaya Hidup Digital Anda" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Deskripsi Utama (Hero Description)</label>
+                    <textarea id="setHeroDesc" rows="3" required placeholder="Masukkan deskripsi..." class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white"></textarea>
+                </div>
+                <div class="md:col-span-2 flex justify-end">
+                    <button type="submit" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl text-sm transition shadow-lg shadow-indigo-600/25 cursor-pointer">Simpan Pengaturan</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+        <div class="glass p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white/5 relative max-h-[90vh] overflow-y-auto">
+            <h3 id="modalTitle" class="text-xl font-extrabold text-white tracking-tight mb-6">Tambah Produk</h3>
+            <form id="productForm" class="space-y-4">
+                <input type="hidden" id="productId">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Produk</label>
+                    <input type="text" id="pName" required placeholder="Contoh: Headphone Wireless Premium" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Harga (IDR)</label>
+                    <input type="number" id="pPrice" required placeholder="Contoh: 1500000" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Kategori</label>
+                    <input type="text" id="pCategory" required placeholder="Contoh: Electronics" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">URL Gambar</label>
+                    <input type="url" id="pImage" required placeholder="https://example.com/image.jpg" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Deskripsi</label>
+                    <textarea id="pDesc" rows="3" required placeholder="Tulis deskripsi singkat..." class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" id="closeModalBtn" class="bg-slate-950/50 border border-slate-800 hover:bg-slate-800 text-slate-300 px-5 py-2.5 rounded-xl text-sm font-semibold transition cursor-pointer">Batal</button>
+                    <button type="submit" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow-lg shadow-indigo-600/25 cursor-pointer">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- User Edit Modal -->
+    <div id="userModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4">
+        <div class="glass p-8 rounded-3xl shadow-2xl w-full max-w-md border border-white/5 relative">
+            <h3 class="text-xl font-extrabold text-white tracking-tight mb-6">Ubah Pengguna</h3>
+            <form id="userForm" class="space-y-4">
+                <input type="hidden" id="userId">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Lengkap</label>
+                    <input type="text" id="uName" required placeholder="Contoh: Budi Santoso" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email</label>
+                    <input type="email" id="uEmail" required placeholder="user@email.com" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">No. Telepon</label>
+                    <input type="text" id="uPhone" placeholder="Contoh: 081234567890" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Alamat Pengiriman</label>
+                    <textarea id="uAddress" rows="2" placeholder="Masukkan alamat..." class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Peran (Role)</label>
+                    <select id="uRole" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                        <option value="customer">Pelanggan</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" id="closeUserModalBtn" class="bg-slate-950/50 border border-slate-800 hover:bg-slate-800 text-slate-300 px-5 py-2.5 rounded-xl text-sm font-semibold transition cursor-pointer">Batal</button>
+                    <button type="submit" class="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition shadow-lg shadow-indigo-600/25 cursor-pointer">Simpan Perubahan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .active-tab {
+            background: linear-gradient(135deg, rgba(139,92,246,0.3), rgba(99,102,241,0.3));
+            color: white;
+            border: 1px solid rgba(139,92,246,0.3);
+        }
+    </style>
+
+</body>
+</html>
