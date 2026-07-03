@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel Admin - TechStore</title>
+    <title>Panel Admin - TOKO GENZ</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/onlineshop-uas/assets/admin-CQD63zIc.js"></script>
-  <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-BbfPF93b.js">
-  <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-BOvirK4w.css">
+  <script type="module" crossorigin src="/onlineshop-uas/assets/admin-DA17UFRk.js"></script>
+  <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-UkYp6x1t.js">
+  <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/products.fallback-RAboSWVK.js">
+  <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-B-zXrXsx.css">
 </head>
 <body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
     
@@ -26,7 +27,7 @@
         <div class="flex items-center gap-3">
             <span class="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
             <a href="index.html" id="adminLogo" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent">
-              TechStore Panel Kontrol
+              TOKO GENZ Panel Kontrol
             </a>
         </div>
         <div class="flex space-x-4 items-center">
@@ -128,6 +129,7 @@
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">ID Pesanan</th>
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Pelanggan</th>
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">No. WhatsApp</th>
+                            <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Pembayaran</th>
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Total</th>
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Status</th>
                             <th class="px-5 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider">Tanggal</th>
@@ -172,7 +174,7 @@
             <form id="settingsForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Toko</label>
-                    <input type="text" id="setShopName" required placeholder="Contoh: TechStore" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                    <input type="text" id="setShopName" required placeholder="Contoh: TOKO GENZ" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nomor WhatsApp Pemilik</label>
@@ -213,8 +215,10 @@
                     <input type="text" id="pCategory" required placeholder="Contoh: Electronics" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">URL Gambar</label>
-                    <input type="url" id="pImage" required placeholder="https://example.com/image.jpg" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Foto Produk</label>
+                    <input type="file" id="pImage" name="image" accept="image/*" class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-violet-500 transition-all text-white file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-violet-600 file:text-white hover:file:bg-violet-700">
+                    <p class="text-[11px] text-slate-500 mt-1.5">Kosongkan jika tidak ingin mengubah gambar saat edit.</p>
+                    <img id="pImagePreview" src="" alt="Preview" class="hidden mt-3 h-32 w-32 rounded-xl object-cover border border-white/5 shadow-md">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Deskripsi</label>

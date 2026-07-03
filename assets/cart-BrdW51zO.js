@@ -1,0 +1,30 @@
+import{d as e,l as t,t as n}from"./api-UkYp6x1t.js";var r=JSON.parse(localStorage.getItem(`cart`))||[],i=document.getElementById(`cartItems`),a=document.getElementById(`cartTotal`),o=document.getElementById(`checkoutForm`),s=new Intl.NumberFormat(`id-ID`,{style:`currency`,currency:`IDR`,maximumFractionDigits:0});function c(){(localStorage.getItem(`theme`)||`dark`)===`light`?document.documentElement.classList.remove(`dark`):document.documentElement.classList.add(`dark`)}function l(){i.innerHTML=``;let t=0;if(r.length===0){i.innerHTML=`
+            <div class="text-center py-12">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-slate-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <p class="text-slate-400 font-semibold text-lg">Keranjang belanja Anda kosong.</p>
+                <p class="text-slate-500 text-sm mt-1">Silakan kembali belanja untuk menambahkan produk.</p>
+            </div>
+        `,a.textContent=`Rp 0`;return}r.forEach((n,r)=>{t+=n.price*n.quantity;let a=document.createElement(`div`);a.className=`flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/5 pb-6 gap-4`,a.innerHTML=`
+            <div class="flex items-center gap-4">
+                <img src="${e(n.image_url)}" class="w-20 h-20 object-cover rounded-2xl border border-white/5">
+                <div>
+                    <h4 class="font-bold text-white text-base leading-snug">${n.name}</h4>
+                    <p class="text-sm text-slate-400 mt-1">${s.format(n.price)}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between w-full sm:w-auto gap-6 mt-2 sm:mt-0">
+                <div class="flex items-center bg-slate-950/60 border border-slate-800 rounded-xl overflow-hidden">
+                    <button class="px-3 py-1.5 hover:bg-slate-800 text-slate-400 hover:text-white transition cursor-pointer" onclick="updateQty(${r}, -1)">&minus;</button>
+                    <span class="px-4 font-bold text-white text-sm">${n.quantity}</span>
+                    <button class="px-3 py-1.5 hover:bg-slate-800 text-slate-400 hover:text-white transition cursor-pointer" onclick="updateQty(${r}, 1)">&plus;</button>
+                </div>
+                <button class="text-slate-500 hover:text-red-400 p-2 hover:bg-red-500/10 rounded-xl transition cursor-pointer" onclick="removeItem(${r})">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+            </div>
+        `,i.appendChild(a)}),a.textContent=s.format(t)}window.updateQty=(e,t)=>{r[e].quantity+=t,r[e].quantity<=0&&r.splice(e,1),localStorage.setItem(`cart`,JSON.stringify(r)),l()},window.removeItem=e=>{r.splice(e,1),localStorage.setItem(`cart`,JSON.stringify(r)),l()};function u(){let e=JSON.parse(localStorage.getItem(`user`));e&&(document.getElementById(`custName`)&&(document.getElementById(`custName`).value=e.name||``),document.getElementById(`custPhone`)&&(document.getElementById(`custPhone`).value=e.phone||``),document.getElementById(`custAddress`)&&(document.getElementById(`custAddress`).value=e.address||``))}var d={cash:`Tunai (Cash)`,bank_transfer:`Transfer Bank`,dana:`Dana`,gopay:`GoPay`,ovo:`OVO`,shopeepay:`ShopeePay`};o.addEventListener(`submit`,async e=>{if(e.preventDefault(),r.length===0){alert(`Keranjang belanja Anda kosong!`);return}let i=document.getElementById(`custName`).value,a=document.getElementById(`custPhone`).value,o=document.getElementById(`custAddress`).value,c=document.getElementById(`paymentMethod`).value,l=r.reduce((e,t)=>e+t.price*t.quantity,0),u=JSON.parse(localStorage.getItem(`user`)),f=`TX-${Date.now()}`,p={customer_name:i,customer_email:u?u.email:null,phone:a,address:o,total_price:l,payment_method:c,cart_items:r.map(e=>({id:e.id,quantity:e.quantity,price:e.price}))},m=f;try{let e=`6287706335584`;try{let n=await t();n&&n.owner_phone&&(e=n.owner_phone)}catch{console.log(`Menggunakan nomor WA owner default.`)}let f=null;try{let e=await n(p);m=e.order_id,f=e.whatsappUrl}catch{console.log(`Koneksi API gagal, pesanan hanya akan disimpan secara lokal di browser (Mode UTS).`)}let h=JSON.parse(localStorage.getItem(`orders`))||[],g={id:m,customer_name:i,customer_email:u?u.email:`guest@guest.com`,address:o,phone:a,total_price:l,payment_method:c,status:`pending`,items:r.map(e=>({product_id:e.id,product_name:e.name,quantity:e.quantity,price:e.price,image_url:e.image_url})),created_at:new Date().toISOString()};h.push(g),localStorage.setItem(`orders`,JSON.stringify(h));let _=[];_.push(`🛒 *PESANAN BARU #${m}*`),_.push(`━━━━━━━━━━━━━━━━━━━━`),_.push(`👤 *Nama:* ${i}`),_.push(`📱 *WhatsApp:* ${a}`),_.push(`📍 *Alamat:* ${o}`),_.push(`💳 *Metode Pembayaran:* ${d[c]||c}`),_.push(``),_.push(`📦 *Detail Pesanan:*`),r.forEach(e=>{_.push(`  • ${e.name}`),_.push(`    ${e.quantity}x ${s.format(e.price)} = ${s.format(e.price*e.quantity)}`)}),_.push(``),_.push(`━━━━━━━━━━━━━━━━━━━━`),_.push(`💰 *TOTAL: ${s.format(l)}*`),_.push(``),_.push(`_Mohon konfirmasi pesanan ini. Terima kasih!_ 🙏`);let v=encodeURIComponent(_.join(`
+`));localStorage.removeItem(`cart`),f?window.open(f,`_blank`):window.open(`https://wa.me/${e}?text=${v}`,`_blank`),window.location.href=`orders.html`}catch{alert(`Checkout gagal. Silakan coba kembali.`)}});async function f(){try{let e=await t();if(e&&e.shop_name){document.title=`Keranjang Anda - ${e.shop_name}`;let t=document.querySelector(`nav a`);t&&(t.textContent=e.shop_name)}}catch{console.log(`API Settings offline.`)}}c(),f(),u(),l();

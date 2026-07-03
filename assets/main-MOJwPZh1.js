@@ -1,0 +1,61 @@
+import{c as e,d as t,l as n}from"./api-UkYp6x1t.js";import{t as r}from"./products.fallback-RAboSWVK.js";var i=[],a=JSON.parse(localStorage.getItem(`cart`))||[],o=JSON.parse(localStorage.getItem(`wishlist`))||[],s=document.getElementById(`productGrid`),c=document.getElementById(`searchInput`),l=document.getElementById(`searchInputMobile`),u=document.getElementById(`categoryFilter`),d=document.getElementById(`categoryFilterMobile`),f=document.getElementById(`cartCount`),p=document.getElementById(`wishlistCount`),m=document.getElementById(`authLink`),h=document.getElementById(`myOrdersLink`),g=document.getElementById(`resultCount`),_=document.getElementById(`themeLightBtn`),v=document.getElementById(`themeDarkBtn`),y=[`bg-violet-600`,`text-white`,`theme-active`,`shadow-sm`],b=[`text-slate-400`,`hover:text-slate-200`];function x(e){!_||!v||(e===`light`?(_.classList.add(...y),_.classList.remove(...b),v.classList.remove(...y),v.classList.add(...b)):(v.classList.add(...y),v.classList.remove(...b),_.classList.remove(...y),_.classList.add(...b)))}function S(e){e!==(localStorage.getItem(`theme`)||`dark`)&&(e===`light`?(document.documentElement.classList.remove(`dark`),localStorage.setItem(`theme`,`light`),R(`Mode Terang Aktif`)):(document.documentElement.classList.add(`dark`),localStorage.setItem(`theme`,`dark`),R(`Mode Gelap Aktif`)),x(e))}function C(){let e=localStorage.getItem(`theme`)||`dark`;e===`light`?document.documentElement.classList.remove(`dark`):document.documentElement.classList.add(`dark`),x(e)}_?.addEventListener(`click`,()=>S(`light`)),v?.addEventListener(`click`,()=>S(`dark`));function w(){let e=JSON.parse(localStorage.getItem(`user`));e?e.role===`admin`?(m.textContent=`Dashboard Admin`,m.href=`admin.html`,m.className=`bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35`,h&&h.classList.add(`hidden`)):(m.textContent=`Keluar (${e.name.split(` `)[0]})`,m.href=`#`,m.className=`border border-red-500/30 text-red-400 hover:bg-red-500/10 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all`,m.onclick=e=>{e.preventDefault(),localStorage.removeItem(`user`),window.location.reload()},h&&h.classList.remove(`hidden`)):(m.textContent=`Masuk`,m.href=`login.html`,m.className=`bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35`,m.onclick=null,h&&h.classList.add(`hidden`))}function T(){f.textContent=a.reduce((e,t)=>e+t.quantity,0)}function E(e){let t=i.find(t=>t.id===e);if(!t)return;let n=a.find(t=>t.id===e);n?n.quantity+=1:a.push({...t,quantity:1}),localStorage.setItem(`cart`,JSON.stringify(a)),T(),R(`${t.name} ditambahkan ke keranjang!`)}var D=document.getElementById(`wishlistModal`),O=document.getElementById(`wishlistToggleBtn`),k=document.getElementById(`closeWishlistBtn`),A=document.getElementById(`closeWishlistBtn2`),j=document.getElementById(`clearWishlistBtn`),M=document.getElementById(`wishlistItems`);function N(){p.textContent=o.length}function P(e){let t=i.find(t=>t.id===e);if(!t)return;let n=o.findIndex(t=>t.id===e);n>-1?(o.splice(n,1),R(`${t.name} dihapus dari wishlist`,`red`)):(o.push(t),R(`${t.name} ditambahkan ke wishlist`)),localStorage.setItem(`wishlist`,JSON.stringify(o)),N(),z()}function F(){M.innerHTML=``;let e=new Intl.NumberFormat(`id-ID`,{style:`currency`,currency:`IDR`,maximumFractionDigits:0});if(o.length===0){M.innerHTML=`
+            <div class="text-center py-8">
+                <p class="text-slate-400 font-semibold">Wishlist Anda kosong.</p>
+                <p class="text-slate-500 text-xs mt-1">Sukai beberapa produk di toko untuk menambahkannya ke sini.</p>
+            </div>
+        `;return}o.forEach(n=>{let r=document.createElement(`div`);r.className=`flex items-center justify-between gap-4 p-3 bg-slate-900/60 border border-white/5 rounded-2xl`,r.innerHTML=`
+            <div class="flex items-center gap-3">
+                <img src="${t(n.image_url)}" class="w-12 h-12 rounded-xl object-cover">
+                <div>
+                    <h4 class="text-sm font-bold text-white truncate w-40">${n.name}</h4>
+                    <p class="text-xs text-violet-400 font-semibold">${e.format(n.price)}</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="bg-violet-600 hover:bg-violet-700 text-white text-xs px-3 py-2 rounded-xl font-bold transition wishlist-add-cart-btn" data-id="${n.id}">+ Cart</button>
+                <button class="text-slate-500 hover:text-red-400 p-2 transition wishlist-remove-btn" data-id="${n.id}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+            </div>
+        `,M.appendChild(r)}),document.querySelectorAll(`.wishlist-add-cart-btn`).forEach(e=>{e.addEventListener(`click`,e=>{E(parseInt(e.target.dataset.id))})}),document.querySelectorAll(`.wishlist-remove-btn`).forEach(e=>{e.addEventListener(`click`,e=>{P(parseInt(e.target.closest(`button`).dataset.id)),F()})})}O.addEventListener(`click`,()=>{F(),D.classList.remove(`hidden`)});var I=()=>D.classList.add(`hidden`);k.addEventListener(`click`,I),A.addEventListener(`click`,I),D.addEventListener(`click`,e=>{e.target===D&&I()}),j.addEventListener(`click`,()=>{o=[],localStorage.setItem(`wishlist`,JSON.stringify(o)),N(),F(),z(),R(`Wishlist berhasil dibersihkan`,`red`)});function L(e){if(s.innerHTML=``,g&&(g.textContent=`Menampilkan ${e.length} produk`),e.length===0){s.innerHTML=`<div class="col-span-full text-center text-slate-500 py-20 font-medium">Tidak ada produk yang cocok dengan pencarianmu.</div>`;return}e.forEach(e=>{let n=document.createElement(`div`);n.className=`glass-card rounded-3xl overflow-hidden relative group border border-white/5 flex flex-col justify-between`;let r=new Intl.NumberFormat(`id-ID`,{style:`currency`,currency:`IDR`,maximumFractionDigits:0}),i={Electronics:`Elektronik`,Accessories:`Aksesori`,Fashion:`Fashion`,Photography:`Fotografi`}[e.category]||e.category,a=e.rating||4.5,c=o.some(t=>t.id===e.id);n.innerHTML=`
+            <div>
+                <!-- Image Container -->
+                <div class="relative overflow-hidden aspect-video sm:aspect-square">
+                    <img src="${t(e.image_url)}" alt="${e.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-60"></div>
+                    <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-violet-400 text-xs font-bold px-3 py-1.5 rounded-full border border-white/10 uppercase tracking-wider">
+                        ${i}
+                    </span>
+                    <!-- Heart Wishlist Toggle Button (UTS Bonus) -->
+                    <button class="wishlist-btn absolute top-4 right-4 p-2 bg-slate-900/80 hover:bg-slate-800 backdrop-blur-md rounded-full border border-white/10 transition duration-300 cursor-pointer" data-id="${e.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 ${c?`fill-rose-500 text-rose-500`:`text-slate-400 hover:text-white`}" viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                    <!-- Rating Star UI (UTS Bonus) -->
+                    <div class="flex items-center gap-1 mb-2 text-amber-400 text-xs">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <span class="font-bold text-slate-300">${a.toFixed(1)}</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white leading-snug group-hover:text-violet-400 transition-colors duration-300">${e.name}</h3>
+                    <p class="text-slate-400 text-sm mt-2 line-clamp-2 leading-relaxed">${e.description}</p>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-white/5">
+                <span class="text-lg font-extrabold text-white">${r.format(e.price)}</span>
+                <button class="add-to-cart-btn bg-violet-600 hover:bg-violet-700 active:scale-95 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-violet-600/10 hover:shadow-violet-600/30" data-id="${e.id}">
+                    + Keranjang
+                </button>
+            </div>
+        `,s.appendChild(n)}),document.querySelectorAll(`.add-to-cart-btn`).forEach(e=>{e.addEventListener(`click`,e=>{E(parseInt(e.target.dataset.id))})}),document.querySelectorAll(`.wishlist-btn`).forEach(e=>{e.addEventListener(`click`,e=>{let t=e.target.closest(`button`);P(parseInt(t.dataset.id))})})}function R(e,t=`violet`){let n={violet:`border-violet-500/30 text-white`,red:`border-red-500/30 text-rose-300`},r=document.createElement(`div`);r.className=`fixed bottom-6 right-6 z-50 glass border ${n[t]||n.violet} px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 transition-all duration-300 transform translate-y-10 opacity-0`,r.innerHTML=`
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${t===`red`?`text-rose-400`:`text-emerald-400`}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-sm font-semibold">${e}</span>
+    `,document.body.appendChild(r),setTimeout(()=>r.classList.remove(`translate-y-10`,`opacity-0`),10),setTimeout(()=>{r.classList.add(`translate-y-10`,`opacity-0`),setTimeout(()=>r.remove(),300)},2500)}function z(){let e=(c.value||(l?l.value:``)).toLowerCase(),t=u.value||(d?d.value:``);L(i.filter(n=>{let r=n.name.toLowerCase().includes(e)||n.description.toLowerCase().includes(e),i=t===``||n.category===t;return r&&i}))}async function B(){C(),w(),T(),N();try{let e=await n();if(e){if(e.shop_name){let t=document.getElementById(`logoText`);t&&(t.textContent=e.shop_name),document.title=`${e.shop_name} - Elektronik Premium`}if(e.hero_title){let t=document.getElementById(`heroTitle`);t&&(t.innerHTML=e.hero_title)}if(e.hero_description){let t=document.getElementById(`heroDescription`);t&&(t.textContent=e.hero_description)}}}catch{console.log(`API Settings offline, menggunakan dummy header.`)}try{i=await e(),i=i.map((e,t)=>({...e,rating:e.rating||4+t%10*.1})),localStorage.setItem(`products`,JSON.stringify(i)),L(i)}catch{console.log(`Koneksi backend API gagal. Mengaktifkan mode dummy UTS (LocalStorage fallback).`);let e=JSON.parse(localStorage.getItem(`products`));i=e&&e.length>0?e:r,localStorage.setItem(`products`,JSON.stringify(i)),L(i)}c.addEventListener(`input`,()=>{l&&(l.value=c.value),z()}),l&&l.addEventListener(`input`,()=>{c.value=l.value,z()}),u.addEventListener(`change`,()=>{d&&(d.value=u.value),z()}),d&&d.addEventListener(`change`,()=>{u.value=d.value,z()})}B();

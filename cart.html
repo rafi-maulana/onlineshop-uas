@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang Anda - TechStore</title>
+    <title>Keranjang Anda - TOKO GENZ</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/onlineshop-uas/assets/cart-fxVrNNgs.js"></script>
-  <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-BbfPF93b.js">
-  <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-BOvirK4w.css">
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
+  <script type="module" crossorigin src="/onlineshop-uas/assets/cart-BrdW51zO.js"></script>
+  <link rel="modulepreload" crossorigin href="/onlineshop-uas/assets/api-UkYp6x1t.js">
+  <link rel="stylesheet" crossorigin href="/onlineshop-uas/assets/api-B-zXrXsx.css">
 </head>
 <body class="bg-[#0b0f19] text-[#f1f5f9] min-h-screen selection:bg-violet-500 selection:text-white">
     
@@ -24,7 +30,7 @@
     <nav class="sticky top-4 z-40 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="glass rounded-2xl shadow-xl mt-4 px-6 py-4 flex justify-between items-center">
         <a href="index.html" class="text-2xl font-extrabold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-400 bg-clip-text text-transparent hover:opacity-90 transition-opacity">
-          TechStore
+          TOKO GENZ
         </a>
         <a href="index.html" class="text-sm font-semibold text-slate-300 hover:text-violet-400 flex items-center gap-1.5 transition-all">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -68,6 +74,17 @@
                 <div>
                     <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Alamat Lengkap</label>
                     <textarea id="custAddress" required rows="3" placeholder="Masukkan alamat lengkap pengiriman..." class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all placeholder-slate-600 text-white"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Metode Pembayaran</label>
+                    <select id="paymentMethod" required class="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all cursor-pointer text-white">
+                        <option value="cash">Tunai (Cash)</option>
+                        <option value="bank_transfer">Transfer Bank</option>
+                        <option value="dana">Dana</option>
+                        <option value="gopay">GoPay</option>
+                        <option value="ovo">OVO</option>
+                        <option value="shopeepay">ShopeePay</option>
+                    </select>
                 </div>
                 <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-emerald-900/25 hover:shadow-emerald-900/40 flex items-center justify-center gap-2 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
