@@ -1,0 +1,274 @@
+{
+  "info": {
+    "name": "Online Shop API - UAS Pemrograman Web 2",
+    "description": "Dokumentasi lengkap REST API Online Shop menggunakan Node.js + Express + MySQL + JWT Authentication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000/api" },
+    { "key": "token", "value": "" },
+    { "key": "admin_token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/register" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Budi Santoso\",\n  \"email\": \"budi@email.com\",\n  \"password\": \"password123\",\n  \"phone\": \"08123456789\",\n  \"address\": \"Jl. Merdeka No. 1, Jakarta\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Sukses Register",
+              "status": "Created",
+              "code": 201,
+              "body": "{\n  \"message\": \"Registrasi berhasil\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": { \"id\": 1, \"name\": \"Budi Santoso\", \"email\": \"budi@email.com\", \"role\": \"customer\" }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login (Customer)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": ["const data = pm.response.json();", "if(data.token) pm.collectionVariables.set('token', data.token);"]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/login" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"budi@email.com\",\n  \"password\": \"password123\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Sukses Login",
+              "status": "OK",
+              "code": 200,
+              "body": "{\n  \"message\": \"Login berhasil\",\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": { \"id\": 1, \"name\": \"Budi Santoso\", \"email\": \"budi@email.com\", \"role\": \"customer\" }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login (Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": ["const data = pm.response.json();", "if(data.token) pm.collectionVariables.set('admin_token', data.token);"]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/auth/login" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"admin123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cek Data Login (Me)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/auth/me" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produk (Public)",
+      "item": [
+        {
+          "name": "Ambil Semua Produk",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/products" }
+          }
+        },
+        {
+          "name": "Ambil Detail Produk",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/products/1" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produk (Admin Only)",
+      "item": [
+        {
+          "name": "Tambah Produk",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/products" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Gaming ASUS ROG\",\n  \"price\": 15000000,\n  \"image_url\": \"https://via.placeholder.com/300\",\n  \"description\": \"Laptop gaming bertenaga tinggi\",\n  \"category\": \"Elektronik\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Produk",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/products/1" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Gaming ASUS ROG Updated\",\n  \"price\": 14500000,\n  \"image_url\": \"https://via.placeholder.com/300\",\n  \"description\": \"Laptop gaming bertenaga tinggi - diskon\",\n  \"category\": \"Elektronik\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Hapus Produk",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+            "url": { "raw": "{{base_url}}/products/1" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pesanan (Orders)",
+      "item": [
+        {
+          "name": "Checkout (Buat Pesanan)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/checkout" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_name\": \"Budi Santoso\",\n  \"customer_email\": \"budi@email.com\",\n  \"address\": \"Jl. Merdeka No. 1, Jakarta\",\n  \"phone\": \"08123456789\",\n  \"total_price\": 350000,\n  \"cart_items\": [\n    { \"id\": 1, \"quantity\": 2, \"price\": 150000 },\n    { \"id\": 2, \"quantity\": 1, \"price\": 50000 }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Ambil Semua Pesanan (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+            "url": { "raw": "{{base_url}}/orders" }
+          }
+        },
+        {
+          "name": "Pesanan per Email User",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "{{base_url}}/orders/user/budi@email.com" }
+          }
+        },
+        {
+          "name": "Update Status Pesanan (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/orders/1/status" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"processing\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "Status valid",
+              "body": "pending | processing | shipped | completed | cancelled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pengguna (Admin Only)",
+      "item": [
+        {
+          "name": "Ambil Semua Pengguna",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+            "url": { "raw": "{{base_url}}/users" }
+          }
+        },
+        {
+          "name": "Update Data Pengguna",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/users/1" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Budi Update\",\n  \"email\": \"budi_update@email.com\",\n  \"phone\": \"08999999999\",\n  \"address\": \"Jl. Baru No. 5\",\n  \"role\": \"customer\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Hapus Pengguna",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{admin_token}}" }],
+            "url": { "raw": "{{base_url}}/users/1" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pengaturan",
+      "item": [
+        {
+          "name": "Ambil Pengaturan Toko (Public)",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/settings" }
+          }
+        },
+        {
+          "name": "Update Pengaturan (Admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{admin_token}}" }
+            ],
+            "url": { "raw": "{{base_url}}/settings" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"store_name\": \"TechStore ID\",\n  \"store_phone\": \"081234567890\",\n  \"store_address\": \"Jl. Teknologi No. 1, Jakarta\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

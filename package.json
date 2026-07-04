@@ -1,0 +1,14 @@
+{
+  "name": "onlineshop-monorepo",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "start": "npm --prefix backend run start"
+  },
+  "dependencies": {
+    "multer": "^2.2.0"
+  }
+}

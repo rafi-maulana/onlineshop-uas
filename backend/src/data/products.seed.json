@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Wireless Noise-Cancelling Headphones",
+    "price": 1850000,
+    "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80",
+    "description": "Headphones nirkabel premium dengan peredam bising aktif (ANC) dan daya tahan baterai hingga 40 jam.",
+    "category": "Electronics"
+  },
+  {
+    "name": "Mechanical Gaming Keyboard RGB",
+    "price": 950000,
+    "image_url": "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&q=80",
+    "description": "Keyboard mekanikal RGB taktil dengan switch biru ceri, ideal untuk mengetik cepat dan presisi gaming.",
+    "category": "Electronics"
+  },
+  {
+    "name": "Smart Sports Watch GPS",
+    "price": 1400000,
+    "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+    "description": "Jam tangan pintar pelacak kebugaran dengan GPS terintegrasi, sensor detak jantung, dan layar AMOLED.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Classic Aviator Sunglasses UV400",
+    "price": 280000,
+    "image_url": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800&q=80",
+    "description": "Kacamata aviator hitam klasik dengan perlindungan sinar UV400 penuh dan bingkai logam kokoh.",
+    "category": "Fashion"
+  },
+  {
+    "name": "Minimalist Slim Leather Wallet",
+    "price": 220000,
+    "image_url": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800&q=80",
+    "description": "Dompet kulit sapi asli ultra-tipis dengan slot kartu pengaman RFID untuk keamanan ekstra.",
+    "category": "Fashion"
+  },
+  {
+    "name": "Professional Prime Camera Lens 50mm",
+    "price": 3800000,
+    "image_url": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&q=80",
+    "description": "Lensa prime 50mm f/1.8 yang menghasilkan bokeh tajam dan performa memukau di kondisi cahaya minim.",
+    "category": "Photography"
+  },
+  {
+    "name": "Portable Bluetooth Speaker Waterproof",
+    "price": 650000,
+    "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80",
+    "description": "Speaker portabel nirkabel tahan air IPX7 dengan bass bertenaga dan konektivitas Bluetooth 5.0.",
+    "category": "Electronics"
+  },
+  {
+    "name": "Ergonomic Vertical Mouse Wireless",
+    "price": 450000,
+    "image_url": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&q=80",
+    "description": "Mouse ergonomis vertikal untuk meredakan ketegangan pergelangan tangan akibat penggunaan jangka panjang.",
+    "category": "Electronics"
+  },
+  {
+    "name": "Ultra Slim Powerbank 20000mAh",
+    "price": 350000,
+    "image_url": "https://images.unsplash.com/photo-1609592424085-f5b22551c55b?w=800&q=80",
+    "description": "Pengisi daya portabel kapasitas besar 20.000mAh dengan pengisian cepat dua arah USB-C Power Delivery.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Canvas Travel Backpack 35L",
+    "price": 580000,
+    "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80",
+    "description": "Ransel kanvas retro berkapasitas besar dengan kompartemen laptop 15.6 inci yang empuk dan aman.",
+    "category": "Fashion"
+  },
+  {
+    "name": "Dual-Band Wi-Fi 6 Router",
+    "price": 890000,
+    "image_url": "https://images.unsplash.com/photo-1544264516-3e44b506240f?w=800&q=80",
+    "description": "Router Wi-Fi 6 berkecepatan tinggi dengan 4 antena eksternal untuk cakupan sinyal rumah yang luas.",
+    "category": "Electronics"
+  },
+  {
+    "name": "LED Desk Lamp with Wireless Charger",
+    "price": 390000,
+    "image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80",
+    "description": "Lampu meja belajar LED dengan 5 mode kecerahan dan pengisi daya nirkabel Qi terintegrasi.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Leather Dress Belt Classic",
+    "price": 180000,
+    "image_url": "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80",
+    "description": "Ikat pinggang formal pria berbahan kulit asli dengan gesper logam premium berlapis satin.",
+    "category": "Fashion"
+  },
+  {
+    "name": "USB-C Hub Multiport Adapter 7-in-1",
+    "price": 320000,
+    "image_url": "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=800&q=80",
+    "description": "Adaptor USB-C multiport dengan output HDMI 4K, pembaca kartu SD, dan port pengisian daya passthrough PD.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Premium Wool Beanie Hat",
+    "price": 120000,
+    "image_url": "https://images.unsplash.com/photo-1576871337622-98d48d4aa53e?w=800&q=80",
+    "description": "Topi kupluk beanie rajut rajutan wol tebal berkualitas tinggi yang hangat, nyaman, dan modis.",
+    "category": "Fashion"
+  },
+  {
+    "name": "Desktop Dual Monitor Mount Stand",
+    "price": 750000,
+    "image_url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=800&q=80",
+    "description": "Dudukan lengan ganda monitor artikulasi penuh untuk menghemat ruang meja dan meningkatkan ergonomi.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Compact Travel Umbrella Automatic",
+    "price": 150000,
+    "image_url": "https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?w=800&q=80",
+    "description": "Payung lipat travel otomatis berbahan tebal tahan angin dengan lapisan anti-UV hitam pekat.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Adjustable Phone Tablet Stand",
+    "price": 90000,
+    "image_url": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&q=80",
+    "description": "Dudukan ponsel dan tablet lipat yang dapat disesuaikan sudutnya, berbahan paduan aluminium solid.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Minimalist Ceramic Coffee Mug",
+    "price": 110000,
+    "image_url": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80",
+    "description": "Cangkir kopi keramik minimalis buatan tangan dengan tekstur tanah liat alami berpenampilan estetik.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Professional Studio Mic Condenser",
+    "price": 1250000,
+    "image_url": "https://images.unsplash.com/photo-1590608897129-79da98d15969?w=800&q=80",
+    "description": "Mikrofon kondensor rekaman studio USB dengan pola pickup kardioid untuk suara vokal jernih.",
+    "category": "Electronics"
+  },
+  {
+    "name": "Heavy Duty Cable Organizer Bag",
+    "price": 160000,
+    "image_url": "https://images.unsplash.com/photo-1558882224-cca166733360?w=800&q=80",
+    "description": "Tas travel organizer kabel tahan air untuk merapikan charger, flashdisk, dan aksesoris elektronik.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Stainless Steel Thermal Flask 500ml",
+    "price": 240000,
+    "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800&q=80",
+    "description": "Botol minum termos vakum dinding ganda yang menjaga suhu panas hingga 12 jam dan dingin hingga 24 jam.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Ultra Soft Bath Towel Organic Cotton",
+    "price": 190000,
+    "image_url": "https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=800&q=80",
+    "description": "Handuk mandi katun organik 100% serat panjang yang sangat menyerap air dan lembut untuk kulit sensitif.",
+    "category": "Accessories"
+  },
+  {
+    "name": "Casual Canvas Sneakers Classic",
+    "price": 380000,
+    "image_url": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800&q=80",
+    "description": "Sepatu kets kasual berbahan kanvas berserat kuat dengan sol karet anti slip untuk kenyamanan melangkah.",
+    "category": "Fashion"
+  }
+]
